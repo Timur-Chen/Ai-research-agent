@@ -135,3 +135,28 @@ This system is designed to run as a **local command-line tool**. To deploy it on
 4. Run `python main.py --query "your question"`
 
 No server or container is required for local use.
+
+
+## Step 2 Progress
+
+### What was implemented
+
+- `tools/calculator.py` — safe arithmetic evaluation using Python ast module
+- `tools/file_reader.py` — reads .txt, .csv and .json files
+- `tools/web_search.py` — real-time web search via Tavily API
+- `tools/memory_store.py` — in-memory key-value store for agent session
+- `agent/agent.py` — full ReAct loop with tool dispatch
+- `tests/test_tools.py` — unit tests for all tools
+- `tests/test_agent.py` — integration tests with mocked Anthropic API
+
+### Design decisions made during Step 2
+
+- Memory tool redesigned from file-based to in-memory storage
+- code_executor_tool postponed to Step 3 (sandbox safety concerns)
+- summariser_tool exists as utility function, full tool integration in Step 3
+
+### How to run tests
+
+```bash
+pytest tests/ -v
+```
